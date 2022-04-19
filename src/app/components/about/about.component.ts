@@ -11,10 +11,10 @@ import { PokemonInfo } from 'src/app/models/pokemon.interface';
 })
 export class AboutComponent implements OnInit {
   constructor(private router: ActivatedRoute, private http: HttpClient) {}
-  private routeId: string;
-  public pokemonObs: Observable<PokemonInfo>;
+  private routeId!: string;
+  public pokemonObs!: Observable<PokemonInfo>;
   ngOnInit(): void {
-    this.routeId = this.router.snapshot.params.id;
+    this.routeId = this.router.snapshot.params['id'];
     this.initPokemonData();
   }
 

@@ -10,10 +10,10 @@ import { pluck, tap } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
   public urlIdLookup: any;
-  public pokemons: PokemonResult[];
-  public text: string;
-  public filteredPokemon: PokemonResult[];
-  public results: PokemonResult[];
+  public pokemon: PokemonResult[] = [];
+  public text!: string;
+  public filteredPokemon!: PokemonResult[];
+  public results: PokemonResult[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -34,14 +34,14 @@ export class HomeComponent implements OnInit {
         })
       )
       .subscribe((data: PokemonResult[]) => {
-        this.pokemons = this.filteredPokemon = data;
+        this.pokemon = this.filteredPokemon = data;
       });
   }
 
   public onChange(updatedValue: string): void {
     console.log(this.filteredPokemon);
 
-    this.filteredPokemon = this.pokemons.filter((pokemon) =>
+    this.filteredPokemon = this.pokemon.filter((pokemon) =>
       pokemon.name.includes(updatedValue)
     );
   }
